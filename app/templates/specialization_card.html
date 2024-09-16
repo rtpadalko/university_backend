@@ -1,0 +1,59 @@
+{% load static %}
+
+
+{% if "http://localhost:8000/orders/" in request.build_absolute_uri %}
+
+    <div class="card w-100 mb5">
+         <div class="row g-0">
+            <div class="col-md-6 d-flex justify-center">
+                <img src="{{ specialization.image }}"  >
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title">{{ specialization.name }} </h5>
+                    <p class="card-text">Проходной балл: {{ specialization.budget_passing_score }}</p>
+                    <div class="form-group">
+                        <label class="form-label">Приоритет</label>
+                        <input placeholder="Приоритет" disabled type="number" class="form-control" style="width: 150px" value={{ specialization.priority }}>
+                    </div>
+                    <a href="/specializations/{{ specialization.id }}/" class="btn btn-primary" style="width: 100px">
+                        Открыть
+                    </a>
+                </div>
+            </div>
+         </div>
+    </div>
+
+{% else %}
+
+    <div class="card">
+
+        <img src="{{ specialization.image }}" class="specialization-preview" alt=""/>
+
+        <div class="card-body" >
+
+            <div class="card-info">
+
+                <h5 class="card-title">{{ specialization.name }}</h5>
+
+                <p class="card-text">Проходной балл: {{ specialization.budget_passing_score }}</p>
+
+            </div>
+
+            <div class="card-btns">
+
+                <a href="/specializations/{{ specialization.id }}/" class="btn btn-primary center">
+                    Открыть
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endif %}
+
+
+
+
