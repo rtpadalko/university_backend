@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+
+
+        {% if applicant.name %}
+            <span>ФИО: {{ applicant.name }}</span>
+        {% else %}
+            <span>ФИО: не указан</span>
+        {% endif %}
+
+        {% if applicant.birthday_date %}
+            <span>Год рождения: {{ applicant.birthday_date }}</span>
+        {% else %}
+            <span>Год рождения: не указан</span>
+        {% endif %}
+
+        <form method="post" action="{% url 'delete_applicant' applicant.id %}">
+            {% csrf_token %}
+                <button class="btn btn-danger delete-draft-applicant-btn" type="submit">
+                    Удалить
+                </button>
+            </a>
+        </form>
+
+        <h4 class="text-center">Специальности</h4>
+
+        <div class="cards-wrapper d-flex flex-column">
+
+            {% for specialization in applicant.get_specializations %}
+
+                {% include "specialization_card.html" %}
+
+            {% endfor %}
+
+        </div>
+
+    </main>
+{% endblock content %}

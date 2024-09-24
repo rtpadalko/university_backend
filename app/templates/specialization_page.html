@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+
+        <div class="row">
+            <div class="col-6">
+                <img src="{{ specialization.image.url }}" class="specialization-image" alt=""/>
+            </div>
+            <div class="col-6 d-flex flex-md-column gap-md-3">
+
+                <h1>{{ specialization.name }}</h1>
+
+                <span>Описание: {{ specialization.description }}</span>
+
+                <span>Кол-во бюджетных мест: {{ specialization.budget_place }}</span>
+
+                <span>Кол-во платных мест: {{ specialization.paid_place }}</span>
+
+                <span>Проходной балл на бюджет: {{ specialization.budget_passing_score }}</span>
+
+                <span>Цена обучения: {{ specialization.price }} руб/год</span>
+
+                <a href="/" class="return-btn btn btn-primary my-4 w-25">
+                    Назад
+                </a>
+
+            </div>
+        </div>
+
+    </main>
+{% endblock content %}
